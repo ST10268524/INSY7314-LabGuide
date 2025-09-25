@@ -10,7 +10,7 @@ export default function PostCreate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     api.post("/posts/upload", { username, content, picture })
-      .then((res) => {
+      .then(() => {
         alert("Post created!");
         setUsername("");
         setContent("");
@@ -20,13 +20,37 @@ export default function PostCreate() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Create Post</h2>
+    <div className="container-card card shadow p-4">
+      <h2 className="text-center mb-3">Create Post</h2>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        <textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required />
-        <input placeholder="Image URL" value={picture} onChange={(e) => setPicture(e.target.value)} />
-        <button type="submit">Post</button>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <textarea
+            className="form-control"
+            rows="3"
+            placeholder="Content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            placeholder="Image URL"
+            value={picture}
+            onChange={(e) => setPicture(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100">Post</button>
       </form>
     </div>
   );

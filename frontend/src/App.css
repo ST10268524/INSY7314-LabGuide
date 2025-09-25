@@ -37,3 +37,39 @@
   }
 }
 
+body {
+  background-color: #f8f9fa; /* light gray background */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar {
+  background-color: #343a40 !important; /* dark navbar */
+}
+
+.navbar .nav-link,
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar .nav-link:hover {
+  color: #61dafb !important; /* highlight like React blue */
+}
+
+.container-card {
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.post-card img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}

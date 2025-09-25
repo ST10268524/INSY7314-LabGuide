@@ -9,17 +9,34 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
     api.post("/users/signup", { username, password })
-      .then((res) => alert("User created!"))
+      .then(() => alert("User created!"))
       .catch((err) => console.error(err));
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Signup</h2>
+    <div className="container-card card shadow p-4">
+      <h2 className="text-center mb-3">Signup</h2>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Signup</button>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-success w-100">Signup</button>
       </form>
     </div>
   );

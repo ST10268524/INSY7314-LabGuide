@@ -17,12 +17,31 @@ export default function Login() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Login</h2>
+    <div className="container-card card shadow p-4">
+      <h2 className="mb-3 text-center">Login</h2>
       <form onSubmit={handleSubmit}>
-        <input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-        <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            className="form-control"
+            placeholder="Password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button className="btn btn-primary w-100" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
