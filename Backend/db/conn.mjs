@@ -1,21 +1,22 @@
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
+// db/conn.mjs (example)
+import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 dotenv.config();
+const MONGO_URI = process.env.MONGO_URI;
+const DB_NAME = process.env.DB_NAME || 'mydb';
+const client = new MongoClient(MONGO_URI, { useUnifiedTopology: true });
 
-const connectionString = process.env.ATLAS_URI || "";
-
-console.log(connectionString);
-
-const client = new MongoClient(connectionString)
-
-let conn;
-try {
-    conn = await client.connect();
-    console.log('mongoDB is CONNECTED!!! :)');
-} catch(e) {
-    console.error(e)
+let db = null;
+export async function connectToDb() {
+  if (!db) {
+    await client.connect();
+    db = client.db(DB_NAME);
+    console.log('Mongo connected to', DB_NAME);
+  }
+  return db;
 }
 
-let db = client.db("users");
-
-export default db;
+export function getDb() {
+  if (!db) throw new Error('Database not initialized. Call connectToDb() first.');
+  return db;
+}
